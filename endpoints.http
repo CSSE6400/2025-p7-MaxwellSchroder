@@ -1,0 +1,9 @@
+@baseUrl = http://localhost:6400
+
+GET {{baseUrl}}/api/v1/todos
+
+GET {{baseUrl}}/api/v1/todo
+
+
+### Update a Todo
+POST {{baseUrl}}/api/v1/todos/ical
