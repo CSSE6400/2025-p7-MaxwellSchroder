@@ -109,12 +109,17 @@ files = [
 
 [package.dependencies]
 billiard = ">=4.2.1,<5.0"
+boto3 = {version = ">=1.26.143", optional = true, markers = "extra == \"sqs\""}
 click = ">=8.1.2,<9.0"
 click-didyoumean = ">=0.3.0"
 click-plugins = ">=1.1.1"
 click-repl = ">=0.2.0"
-kombu = ">=5.5.2,<5.6"
+kombu = [
+    {version = ">=5.5.2,<5.6"},
+    {version = ">=5.3.4", extras = ["sqs"], optional = true, markers = "extra == \"sqs\""},
+]
 python-dateutil = ">=2.8.2"
+urllib3 = {version = ">=1.26.16", optional = true, markers = "extra == \"sqs\""}
 vine = ">=5.1.0,<6.0"
 
 [package.extras]
@@ -365,6 +370,25 @@ testing = ["coverage", "eventlet", "gevent", "pytest", "pytest-cov"]
 tornado = ["tornado (>=0.2)"]
 
 [[package]]
+name = "icalendar"
+version = "6.2.0"
+description = "iCalendar parser/generator"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "icalendar-6.2.0-py3-none-any.whl", hash = "sha256:25c650cb6571e6f38335e88d614cadf23e347cf32c8acbd6144ce9de9018c5ae"},
+    {file = "icalendar-6.2.0.tar.gz", hash = "sha256:3adad41492093fd57930e5c1a8eca806e8e6f018fe1e2c229a24694a51df92dc"},
+]
+
+[package.dependencies]
+python-dateutil = "*"
+tzdata = "*"
+
+[package.extras]
+test = ["coverage", "hypothesis", "pytest", "pytz"]
+
+[[package]]
 name = "importlib-metadata"
 version = "8.7.0"
 description = "Read metadata from Python packages"
@@ -445,7 +469,9 @@ files = [
 
 [package.dependencies]
 amqp = ">=5.1.1,<6.0.0"
+boto3 = {version = ">=1.26.143", optional = true, markers = "extra == \"sqs\""}
 tzdata = {version = ">=2025.2", markers = "python_version >= \"3.9\""}
+urllib3 = {version = ">=1.26.16", optional = true, markers = "extra == \"sqs\""}
 vine = "5.1.0"
 
 [package.extras]
@@ -930,4 +956,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "08e05d1a4a20eb37f99213663292109defea50959c201dcfd849f170458509a8"
+content-hash = "02f4d64fd75d1637ab981633ac10e1493eed2b166a39ea766732d20de95ba0ab"
