@@ -21,6 +21,7 @@ services:
       - "aws.env"
     environment:
       CELERY_BROKER_URL: sqs://
+      CELERY_RESULT_BACKEND: db+postgresql://administrator:verySecretPassword@database:5432/todo
       SQLALCHEMY_DATABASE_URI: postgresql://administrator:verySecretPassword@database:5432/todo
     ports:
       - "6400:6400"
@@ -40,6 +41,7 @@ services:
       - "aws.env"
     environment:
       CELERY_BROKER_URL: sqs://
+      CELERY_DEFAULT_QUEUE: ical
       CELERY_RESULT_BACKEND: db+postgresql://administrator:verySecretPassword@database:5432/todo
     command: poetry run celery --app todo.tasks.ical worker --loglevel=info
 
